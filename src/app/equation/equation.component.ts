@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl} from '@angular/forms';
 import { MathValidators } from '../math-validators';
 @Component({
   selector: 'app-equation',
@@ -13,7 +13,7 @@ export class EquationComponent {
     b: new FormControl(this.randomNumber()),
     answer: new FormControl('')
   }, 
-  [MathValidators.addition]
+  [MathValidators.addition('answer','a','b')]
 );
 
   get a(){
