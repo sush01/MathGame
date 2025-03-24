@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { MathValidators } from '../math-validators';
 @Component({
@@ -7,7 +7,8 @@ import { MathValidators } from '../math-validators';
   templateUrl: './equation.component.html',
   styleUrl: './equation.component.css'
 })
-export class EquationComponent {
+
+export class EquationComponent implements OnInit {
   mathForm = new FormGroup({
     a: new FormControl(this.randomNumber()),
     b: new FormControl(this.randomNumber()),
@@ -23,7 +24,14 @@ export class EquationComponent {
     return this.mathForm.value.b;
   }
 
+ngOnInit(){
 
+  this.mathForm.statusChanges.subscribe((value) => {
+    console.log(value);
+
+  });
+
+}
 
   randomNumber(){
     return Math.floor(Math.random()*10);
